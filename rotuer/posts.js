@@ -4,14 +4,19 @@ const joiPost = require("../middlewares/post");
 
 const router = express.Router();
 
+//middleware
+
+const auth = require("../middlewares/auth");
+
 router.get("/", require("../controller/post").get);
 
 router.get("/:id", require("../controller/post").getId);
+router.use(auth);
 
-router.post("/", joiPost, require("../controller/post").post);
+router.delete("/:id", require("../controller/post").delete);
 
 router.put("/:id", joiPost, require("../controller/post").put);
 
-router.delete("/:id", require("../controller/post").delete);
+router.post("/", joiPost, require("../controller/post").post);
 
 module.exports = router;

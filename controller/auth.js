@@ -31,7 +31,8 @@ module.exports = {
               });
             } else {
               const payload = {
-                username,
+                username: username,
+                id: user._id,
               };
               const token = jwt.sign(payload, req.app.get("api_secret_key"), {
                 expiresIn: 720, // 12 saat

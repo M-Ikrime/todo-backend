@@ -44,7 +44,8 @@ module.exports = {
   },
   post: async (req, res) => {
     try {
-      const post = req.body;
+      const post = { ...req.body, user_id: req.user.id };
+
       const createdPost = await Post.create(post);
       res.status(201).json(createdPost);
     } catch (err) {
