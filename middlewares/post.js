@@ -10,6 +10,7 @@ module.exports = async (req, res, next) => {
       title: joi.string().max(10).required(),
       content: joi.string().required(),
       creator: joi.string().required(),
+      endDate: joi.date().min(new Date()),
     };
     const validateControl = joi.object(joiSchema).validate(body);
     if (validateControl.error) {

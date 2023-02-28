@@ -57,11 +57,11 @@ module.exports = {
     try {
       const { id } = req.params;
       console.log(id);
-      const { title, content, creator } = req.body;
+      const { title, content, creator, endDate } = req.body;
       if (!mongoose.Types.ObjectId.isValid(id)) {
         return res.status(404).send("post bulunamadı");
       }
-      const updatePost = { title, content, creator, _id: id };
+      const updatePost = { title, content, creator, endDate, _id: id };
       await Post.findByIdAndUpdate(id, updatePost, { new: true });
       res.json(updatePost);
     } catch (err) {

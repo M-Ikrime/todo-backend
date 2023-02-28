@@ -14,6 +14,10 @@ const postSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+  endDate: {
+    type: Date,
+    required: true,
+  },
 });
 
 const Post = mongoose.model("post", postSchema);
