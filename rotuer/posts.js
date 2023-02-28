@@ -8,10 +8,11 @@ const router = express.Router();
 
 const auth = require("../middlewares/auth");
 
+router.use(auth);
+
 router.get("/", require("../controller/post").get);
 
 router.get("/:id", require("../controller/post").getId);
-router.use(auth);
 
 router.delete("/:id", require("../controller/post").delete);
 

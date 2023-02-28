@@ -26,7 +26,8 @@ module.exports = {
     */
 
     try {
-      const getAllPosts = await Post.find().populate("user_id");
+      const id = req.user.id;
+      const getAllPosts = await Post.find({ user_id: id }).populate("user_id");
       res.json(getAllPosts);
     } catch (err) {
       console.log(err);
